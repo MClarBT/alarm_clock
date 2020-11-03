@@ -6,12 +6,22 @@ window.addEventListener('load', function() {
     //okay, so the JavaScript way to get the time...
 
     var today = new Date();
-    var time = today.getHours() + ":" + today.getMinutes();
 
-    //next TODO: I need to format the time so that it is not in military time
+    if(today.getHours() > 12)
+    {
+      var time = (today.getHours() - 12) + ":" + today.getMinutes();
+    }
+
+    else {
+      var time = today.getHours() + ":" + today.getMinutes();
+    }
+
     document.getElementById("currentTime").innerHTML = time; //time.toLocaleTimeString();
 
   }
+
+  //Next TODO: I need to make a method that catches the time the user wants an alarm for and then
+  //actually acts as an alarm
 
   event.preventDefault();
   getTime();
