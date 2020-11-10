@@ -2,6 +2,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<meta http-equiv="X-UA-Compatible" content="ie=edge">-->
     <title>Alarm Clock - Rise and Shine!</title>
     <link rel="stylesheet" href="index.css">
 
@@ -26,7 +28,7 @@
     what time they'd like to set an alarm for...-->
 
     <div>
-      <form class="alarmClockForm" action="index.html" method="post">
+      <!--<form class="alarmClockForm" action="index.html" method="post">
         Set an alarm for:&nbsp
         <label for="hour">Hour:&nbsp</label>
         <select id="alarm-hour" class="" name="">
@@ -45,19 +47,14 @@
           <option value="12">12</option>
 
         </select>
-        <!--
-        <select id="years" class="" name="years-of-term-options">
-          <option value="">Choose an Option </option>
-          <option value="15">15 Years Fixed</option>
-          <option value="30">30 Years Fixed</option><br>
-        </select><br>
-        -->
 
-        <!--Next TODO: make the minutes part a select element-->
         <label for="minutes">Minutes:&nbsp</label>
-        <input id="alarm-minutes" type="text">&nbsp
+        <input id="alarm-minutes" type="text">
 
-      </form>
+      </form>-->
+      <input type="datetime-local" id="alarmTime" />
+      <button onclick="setAlarm(this);" id="alarmButton">Set Alarm</button>
+
     </div>
 
 
