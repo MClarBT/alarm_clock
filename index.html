@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+    <meta http-equiv="X-UA-Compatible"> <!--content="ie=edge">-->
     <title>Alarm Clock - Rise and Shine!</title>
     <link rel="stylesheet" href="index.css">
 
@@ -53,8 +53,13 @@
 
       </form>-->
       <input type="datetime-local" id="alarmTime" />
-      <button onclick="setAlarm(this);" id="alarmButton">Set Alarm</button>
+      <button onclick="setAlarm();" id="alarmButton">Set Alarm</button>
 
+    </div>
+
+    <div id="alarmOptions">
+      <button onclick="snooze();">Snooze 5 minutes</button>
+      <button onclick="stopAlarm();">Stop Alarm</button>
     </div>
 
 

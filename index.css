@@ -2,3 +2,7 @@ img {
   height: 60vh;
   width: 30vw;
 }
+
+#alarmOptions {
+  display: none;
+}
