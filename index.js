@@ -1,41 +1,47 @@
 //Okay, so this will be the JavaScript file for the alarm clock...
 
+
 var alarmSound = new Audio();
 alarmSound.src = 'alarm.mp3;'
 var alarmTimer;
 
 //putting this setAlarm function here to fix the uncaught reference error my code is complaining about
+
 function setAlarm(button) {
   var ms = document.getElementById('alarmTime').valueAsNumber;
   if(isNaN(ms)) {
     alert('Invalid Date');
     return;
-}
+  }
 
-var alarm = new Date(ms);
+  var alarm = new Date(ms);
+  var alarmTime = new Date(alarm.getUTCFullYear(), alarm.getUTCMonth(), alarm.getUTCDate(), alarm.getUTCHours(), alarm.getUTCMinutes(), alarm.getUTCSeconds());
+  var differenceInMs = alarm.getTime() - (new Date()).getTime();
 
-var alarmTime = new Date(alarm.getUTCFullYear(), alarm.getUTCMonth(), alarm.getUTCDate(), alarm.getUTCHours(), alarm.getUTCMinutes(), alarm.getUTCSeconds());
+  if(differenceInMs < 0)
+  {
+    alert('Specified time is already passed!');
+    return;
+  }
 
-var differenceInMs = alarm.getTime() - (new Date()).getTime();
+  document.getElementById('alarmButton').click(setAlarm(button));
+  console.log("I have the alarm running. ");
 
-if(differenceInMs < 0)
-{
-  alert('Specified time is already passed!');
-  return;
-}
+  alarmTimer = setTimeout(initAlarm, differenceInMs);
 
-alarmTimer = setTimeout(initAlarm, differenceInMs);
-
-button.innerText = 'Cancel Alarm';
-button.setAttribute('onclick', 'cancelAlarm(this);');
+  button.innerText = 'Cancel Alarm';
+  button.setAttribute('onclick', 'cancelAlarm(this);');
 
 };
+//$("#img-clck").click(codeAddress);
+
 
 
 function cancelAlarm(button) {
+  clearTimeout(alarmTimer);
   button.innerText = 'Set Alarm';
   button.setAttribute('onclick', 'setAlarm(this);');
-  clearTimeout(alarmTimer);
+
 };
 
 
@@ -49,20 +55,19 @@ function stopAlarm() {
   alarmSound.pause();
   alarmSound.currentTime = 0;
   document.getElementById('alarmOptions').style.display = 'none';
+  cancelAlarm(document.getElementById('alarmButton'));
 };
 
 
 function snooze() {
   stopAlarm();
-  setTimeout(initAlarm, 300000); // 5 * 60 * 1000 = 5 Minutes
+  alarmTimer = setTimeout(initAlarm, 300000); // 5 * 60 * 1000 = 5 Minutes
 }
 
 //(refer to Alarm Clock in JS | JavaScript Tutorials | Web Development Tutorials video by VerkkoNet on YouTube)
 //I'm following that video tutorial
 
-
-//---------------------------------------------------------------------------------------------------------------------------------------------
-
+//---------------------------------------------------------------------------------------------------------------------------------
 
 window.addEventListener('load', function() {
 
@@ -96,9 +101,7 @@ window.addEventListener('load', function() {
 
   event.preventDefault();
   getTime();
+  setAlarm();
   //setAlarm();
 
 });
-
-
-//-------------------------------------------------------------------------------------------------------

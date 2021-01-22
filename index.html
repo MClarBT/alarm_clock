@@ -2,8 +2,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
     <title>Alarm Clock - Rise and Shine!</title>
     <link rel="stylesheet" href="index.css">
     <script src="index.js" type="text/javascript"></script>
@@ -19,13 +19,8 @@
       <img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/2010-07-20_Black_windup_alarm_clock_face.jpg" alt="alarm clock">
     </div>
 
-    <!--<input id="the-rate" type="text"> %<br>-->
-    <p>The current time is: </p>
-    <p id="currentTime">The current time is: </p>
-
-      <input id="alarmTime" type="datetime-local">
-    	<button id="alarmButton" onclick="setAlarm(this);">Set Alarm</button>
-
+    <input id="alarmTime" type="datetime-local">
+    <button id="alarmButton" onclick="setAlarm(this);">Set Alarm</button>
 
     <div id="alarmOptions">
       <button onclick="snooze();">Snooze 5 minutes</button>
